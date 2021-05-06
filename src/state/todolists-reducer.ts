@@ -1,5 +1,6 @@
 import {v1} from 'uuid';
-import {TodolistType} from '../api/todolists-api'
+import {todolistsAPI, TodolistType} from '../api/todolists-api'
+import {Dispatch} from "redux";
 
 export type RemoveTodolistActionType = {
     type: 'REMOVE-TODOLIST',
@@ -23,7 +24,7 @@ export type ChangeTodolistFilterActionType = {
 
 type ActionsType = RemoveTodolistActionType | AddTodolistActionType
     | ChangeTodolistTitleActionType
-    | ChangeTodolistFilterActionType
+    | ChangeTodolistFilterActionType | SetTodosActionType
 
 const initialState: Array<TodolistDomainType> =  []
 
@@ -62,6 +63,10 @@ export const todolistsReducer = (state: Array<TodolistDomainType> = initialState
             }
             return [...state]
         }
+        case "SET-TODOS":
+            return action.todos.map((tl)=>{
+                return {...tl, filter: "all"}
+            })
         default:
             return state;
     }
@@ -78,5 +83,50 @@ export const changeTodolistTitleAC = (id: string, title: string): ChangeTodolist
 }
 export const changeTodolistFilterAC = (id: string, filter: FilterValuesType): ChangeTodolistFilterActionType => {
     return { type: 'CHANGE-TODOLIST-FILTER', id: id, filter: filter}
+}
+
+export const setTodosAC = (todos: TodolistType[])=> {
+    return {type: 'SET-TODOS', todos} as const
+}
+export type SetTodosActionType = ReturnType<typeof setTodosAC>
+
+export const createTodosAC = (taskTitile: string)=> {
+    return {type: 'CREATE-TODOS', taskTitile} as const
+}
+export type CreateTodosActionType = ReturnType<typeof createTodosAC>
+
+export const createTodosThunk = (dispatch: Dispatch, getState: any):void=>{
+    //Side effect
+    todolistsAPI.getTodolists()
+        .then((res)=>{
+            let todos = res.data
+            dispatch(setTodosAC(todos))
+        })
+}
+export const addTodosThunk = (title: string)=>{
+    return (dispatch: Dispatch, getState: any):void=>{
+        //Side effect
+        todolistsAPI.createTodolist(title)
+            .then((res)=>{
+                let todos = res.data
+                dispatch(addTodolistAC(title))
+            })
+    }
+}
+export const deleteTodosThunk = (dispatch: Dispatch, getState: any):void=>{
+    //Side effect
+    todolistsAPI.getTodolists()
+        .then((res)=>{
+            let todos = res.data
+            dispatch(setTodosAC(todos))
+        })
+}
+export const updateTodosThunk = (dispatch: Dispatch, getState: any):void=>{
+    //Side effect
+    todolistsAPI.getTodolists()
+        .then((res)=>{
+            let todos = res.data
+            dispatch(setTodosAC(todos))
+        })
 }
 

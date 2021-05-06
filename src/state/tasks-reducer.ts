@@ -1,6 +1,6 @@
 import {TasksStateType} from '../App';
 import {v1} from 'uuid';
-import {AddTodolistActionType, RemoveTodolistActionType} from './todolists-reducer';
+import {AddTodolistActionType, RemoveTodolistActionType, SetTodosActionType} from './todolists-reducer';
 import {TaskPriorities, TaskStatuses, TaskType} from '../api/todolists-api'
 
 export type RemoveTaskActionType = {
@@ -34,6 +34,7 @@ type ActionsType = RemoveTaskActionType | AddTaskActionType
     | ChangeTaskTitleActionType
     | AddTodolistActionType
     | RemoveTodolistActionType
+    | SetTodosActionType
 
 const initialState: TasksStateType = {}
 
@@ -86,6 +87,13 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
         case 'REMOVE-TODOLIST': {
             const copyState = {...state};
             delete copyState[action.id];
+            return copyState;
+        }
+        case "SET-TODOS": {
+            const copyState = {...state};
+            action.todos.forEach((tl) => {
+                copyState[tl.id] = [];
+            })
             return copyState;
         }
         default:

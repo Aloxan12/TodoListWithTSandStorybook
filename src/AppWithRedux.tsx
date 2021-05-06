@@ -1,4 +1,4 @@
-import React, {useCallback, useReducer, useState} from 'react'
+import React, {useCallback, useEffect, useReducer, useState} from 'react'
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
@@ -8,7 +8,7 @@ import {Menu} from '@material-ui/icons';
 import {
     addTodolistAC,
     changeTodolistFilterAC,
-    changeTodolistTitleAC, FilterValuesType,
+    changeTodolistTitleAC, createTodosThunk, FilterValuesType,
     removeTodolistAC, TodolistDomainType,
     todolistsReducer
 } from './state/todolists-reducer'
@@ -25,8 +25,10 @@ export type TasksStateType = {
 
 
 function AppWithRedux() {
-    let todolistId1 = v1();
-    let todolistId2 = v1();
+
+    useEffect(()=>{
+        dispatch(createTodosThunk)
+    },[])
 
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
