@@ -1,9 +1,9 @@
 import React from 'react'
 import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, TextField, Button, Grid} from '@material-ui/core'
 import {FormikHelpers, useFormik} from 'formik'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {loginTC} from './auth-reducer'
-import { AppRootStateType} from '../../app/store'
+import {AppRootStateType, useAppDispatch} from '../../app/store'
 import { Redirect } from 'react-router-dom'
 
 type FormValueType = {
@@ -13,7 +13,7 @@ type FormValueType = {
 }
 
 export const Login = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
 
@@ -37,11 +37,16 @@ export const Login = () => {
             rememberMe: false
         },
         onSubmit: async (values:FormValueType, formikHelpers:FormikHelpers<FormValueType>) => {
-            const res = await dispatch(loginTC(values));
-            // if(res.type === loginTC.rejected.type){
-            //     if(res.payload)
-            //     formikHelpers.setFieldError('email', 'fake error')
-            // }
+            // @ts-ignore
+            const action = await dispatch(loginTC(values));
+            // @ts-ignore
+            if(loginTC.rejected.type.match(action)){
+                // @ts-ignore
+                if(action.payload?.fieldsError?.length){
+                    const error = action.payload?.fieldsError[0]
+                    formikHelpers.setFieldError(error., 'fake error')
+                }
+            }
         },
     })
 

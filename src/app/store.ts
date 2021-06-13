@@ -32,5 +32,5 @@ export type AppRootStateType = ReturnType<RootReducerType>
 // @ts-ignore
 window.store = store
 
-//export type AppDispatchType = typeof store.dispatch
-//export const useAppDispatch =()=>useDispatch<AppDispatchType>()
+export type AppDispatchType = typeof store.dispatch
+export const useAppDispatch =()=>useDispatch<AppDispatchType>();
