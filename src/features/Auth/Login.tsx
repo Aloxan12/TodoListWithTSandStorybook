@@ -1,21 +1,24 @@
 import React from 'react'
-import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, TextField, Button, Grid} from '@material-ui/core'
+import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from '@material-ui/core'
 import {FormikHelpers, useFormik} from 'formik'
 import {useSelector} from 'react-redux'
-import {loginTC} from './auth-reducer'
-import {AppRootStateType, useAppDispatch} from '../../app/store'
-import { Redirect } from 'react-router-dom'
+import {login} from './auth-reducer'
+import {Redirect} from 'react-router-dom'
+import {selectIsLoggedIn} from './selectors'
+import {authActions} from './index'
+import {Action} from 'redux'
+import {useActions, useAppDispatch} from '../../utils/redux-utils'
 
-type FormValueType = {
-    email: string,
-    password: string,
+type FormValuesType = {
+    email: string
+    password: string
     rememberMe: boolean
 }
 
 export const Login = () => {
     const dispatch = useAppDispatch()
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     const formik = useFormik({
         validate: (values) => {
@@ -36,15 +39,13 @@ export const Login = () => {
             password: '',
             rememberMe: false
         },
-        onSubmit: async (values:FormValueType, formikHelpers:FormikHelpers<FormValueType>) => {
-            // @ts-ignore
-            const action = await dispatch(loginTC(values));
-            // @ts-ignore
-            if(loginTC.rejected.type.match(action)){
-                // @ts-ignore
-                if(action.payload?.fieldsError?.length){
-                    const error = action.payload?.fieldsError[0]
-                    formikHelpers.setFieldError(error., 'fake error')
+        onSubmit: async (values: FormValuesType, formikHelpers: FormikHelpers<FormValuesType>) => {
+            const resultAction = await dispatch(authActions.login(values));
+
+            if  (login.rejected.match(resultAction)) {
+                if (resultAction.payload?.fieldsErrors?.length) {
+                    const error = resultAction.payload?.fieldsErrors[0];
+                    formikHelpers.setFieldError(error.field, error.error);
                 }
             }
         },
