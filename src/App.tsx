@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
 import {Counter} from "./components/Counter";
-import './index.scss'
+import './styles/index.scss'
 import {AboutAsync} from "./pages/About/About.async";
 import {MainAsync} from "./pages/Main/Main.async";
 
