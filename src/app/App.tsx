@@ -1,12 +1,9 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
-import {Counter} from "./components/Counter";
-import './styles/index.scss'
-import {AboutAsync} from "./pages/About/About.async";
-import {MainAsync} from "./pages/Main/Main.async";
-import {useTheme} from "./theme/useTheme";
-import {classNames} from "./helpers/classNames/classNames";
-
+import {useTheme} from "app/providers/ThemeProvider";
+import {classNames} from "helpers/classNames/classNames";
+import {AboutAsync} from "pages/About/About.async";
+import {MainAsync} from "pages/Main/Main.async";
 
 export const App = () => {
     const {theme, toggleTheme} = useTheme()
@@ -21,7 +18,6 @@ export const App = () => {
                     <Route path='/' element={<MainAsync />}/>
                 </Routes>
             </Suspense>
-            <Counter />
         </div>
     );
 }
