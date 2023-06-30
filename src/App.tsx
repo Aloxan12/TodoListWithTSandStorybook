@@ -1,22 +1,14 @@
-import React, {Suspense, useState} from 'react';
+import React, { Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
 import {Counter} from "./components/Counter";
 import './styles/index.scss'
 import {AboutAsync} from "./pages/About/About.async";
 import {MainAsync} from "./pages/Main/Main.async";
+import {useTheme} from "./theme/useTheme";
 
-export enum Theme {
-    light = 'light',
-    dark = 'dark'
-}
 
 export const App = () => {
-    const [theme, setTheme] = useState<Theme>(Theme.light)
-
-    const toggleTheme = () =>{
-        setTheme(theme === Theme.dark ? Theme.light : Theme.dark)
-    }
-
+    const {theme, toggleTheme} = useTheme()
     return (
         <div className={`app ${theme}`}>
             <button onClick={toggleTheme}>Поменять тему</button>
