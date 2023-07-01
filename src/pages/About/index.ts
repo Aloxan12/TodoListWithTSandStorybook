@@ -1,1 +1,1 @@
-export {AboutAsync} from './ui/About.async'
+export {AboutAsync as About} from './ui/About.async'
