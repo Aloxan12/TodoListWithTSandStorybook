@@ -14,5 +14,3 @@ export const Navbar = ({className}: NavbarProps) => {
         </div>
     );
 };
-
-export default Navbar;
