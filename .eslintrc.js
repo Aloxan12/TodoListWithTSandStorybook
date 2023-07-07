@@ -5,7 +5,6 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'airbnb',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -17,7 +16,6 @@ module.exports = {
     },
     plugins: [
         'react',
-        '@typescript-eslint',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
