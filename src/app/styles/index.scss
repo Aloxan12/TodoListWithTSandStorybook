@@ -9,20 +9,18 @@
   box-sizing: border-box;
 }
 
-.app{
+.app {
   font-size: var(--font-m);
-
   background-color: var(--bg-color);
   color: var(--primary-color);
-
   min-height: 100vh;
 }
 
-.content-page{
+.content-page {
   display: flex;
 }
 
-.page-wrapper{
+.page-wrapper {
   flex-grow: 1;
   padding: 20px;
 }
