@@ -7,15 +7,21 @@ interface LangSwitcherProps {
 }
 
 export const LangSwitcher = ({ className }: LangSwitcherProps) => {
-    const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-    const onToggle = () => {
-        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru').catch((err) => console.log(err));
-    };
+  const onToggle = () => {
+    i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
+      .catch(() => {
+      });
+  };
 
-    return (
-        <AppButton className={classNames('', {}, [className])} onClick={onToggle} theme={ThemeButton.clear}>
-            {t('Язык')}
-        </AppButton>
-    );
+  return (
+    <AppButton
+      className={classNames('', {}, [className])}
+      onClick={onToggle}
+      theme={ThemeButton.clear}
+    >
+      {t('Язык')}
+    </AppButton>
+  );
 };
