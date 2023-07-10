@@ -6,7 +6,7 @@ interface NotFoundProps {
     className?: string
 }
 
-export const NotFound = ({ className }: NotFoundProps) => {
+const NotFound = ({ className }: NotFoundProps) => {
   const { t } = useTranslation();
   return (
     <div className={classNames(cls.NotFound, {}, [className])}>
@@ -14,3 +14,5 @@ export const NotFound = ({ className }: NotFoundProps) => {
     </div>
   );
 };
+
+export default NotFound;
