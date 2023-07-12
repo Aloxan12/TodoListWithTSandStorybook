@@ -7,11 +7,6 @@ describe('AppButton', () => {
     render(<AppButton>TEST</AppButton>);
     expect(screen.getByText('TEST')).toBeInTheDocument();
   });
-  test('Text render', () => {
-    // eslint-disable-next-line i18next/no-literal-string
-    render(<AppButton>TEST</AppButton>);
-    expect(screen.getByText('TEST')).toHaveTextContent('TEST');
-  });
   test('Test clear theme', () => {
     // eslint-disable-next-line i18next/no-literal-string
     render(<AppButton theme={ThemeButton.clear}>Test</AppButton>);
