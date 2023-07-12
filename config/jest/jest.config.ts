@@ -46,6 +46,9 @@ const config: Config = {
     '**/?(*.)+(spec|test).[tj]s?(x)',
   ],
   rootDir: '../..',
+  moduleNameMapper: {
+    '\\.s?css$': 'identity-obj-proxy',
+  },
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
