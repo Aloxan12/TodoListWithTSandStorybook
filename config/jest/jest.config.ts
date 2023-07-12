@@ -42,10 +42,8 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
   testMatch: [
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[tj]s?(x)',
   ],
-  rootDir: '../..',
+  rootDir: '../../',
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
   },
