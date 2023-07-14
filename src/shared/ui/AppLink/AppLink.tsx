@@ -4,19 +4,32 @@ import { FC } from 'react';
 import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
-    primary = 'primary',
-    secondary = 'secondary',
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+    RED = 'red',
 }
 
 interface AppLinkProps extends LinkProps {
-    className?: string
-    theme?: AppLinkTheme
+    className?: string;
+    theme?: AppLinkTheme;
 }
 
-export const AppLink: FC<AppLinkProps> = ({
-  className, to, children, theme = AppLinkTheme.primary,
-}) => (
-  <Link to={to} className={classNames(cls.appLink, {}, [className, cls[theme]])}>
-    {children}
-  </Link>
-);
+export const AppLink: FC<AppLinkProps> = (props) => {
+    const {
+        to,
+        className,
+        children,
+        theme = AppLinkTheme.PRIMARY,
+        ...otherProps
+    } = props;
+
+    return (
+        <Link
+            to={to}
+            className={classNames(cls.AppLink, { [cls[theme]]: true }, [className])}
+            {...otherProps}
+        >
+            {children}
+        </Link>
+    );
+};

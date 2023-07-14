@@ -1,17 +1,11 @@
 @import "reset";
-@import "thems/dark";
-@import "thems/normal";
 @import "variables/global";
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import "themes/normal";
+@import "themes/dark";
 
 .app {
-    font-size: var(--font-m);
-    background-color: var(--bg-color);
+    font: var(--font-m);
+    background: var(--bg-color);
     color: var(--primary-color);
     min-height: 100vh;
 }
