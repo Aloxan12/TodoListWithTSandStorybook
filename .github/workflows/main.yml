@@ -13,18 +13,19 @@ jobs:
         node-version:
           - '17.x'
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Starting Node.js ${{ matrix.node-version }}
-      - uses: actions/setup-node@v1
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
+      - name: Install modules
         run: npm install
-      - name: build production project
+      - name: Build production project
         run: npm run build:prod
-      - name: linting typescript
-        run: npx run lint:ts
-      - name: linting css
-        run: npx run lint:scss
-      - name: linting testing
-        run: npx run test:unit
+      - name: Linting TypeScript
+        run: npm run lint:ts
+      - name: Linting CSS
+        run: npm run lint:scss
+      - name: Testing
+        run: npm run test:unit
