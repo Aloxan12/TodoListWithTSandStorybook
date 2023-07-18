@@ -23,7 +23,7 @@
   border-radius: 12px;
   background: var(--bg-color);
 
-  transition: 0.3s tranform;
+  transition: 0.3s transform;
   transform: scale(0.5);
   max-width: 60%;
 }
@@ -34,6 +34,12 @@
   z-index: var(--modal-z-index);
 
   .content {
-    transform: scale(0.5);
+    transform: scale(1);
+  }
+}
+
+.isClosing {
+  .content {
+    transform: scale(.2);
   }
 }

@@ -14,7 +14,6 @@ function App() {
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar />
-                <button onClick={() => setIsOpen(true)}>modal</button>
                 <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
                 <div className="content-page">
                     <Sidebar />
