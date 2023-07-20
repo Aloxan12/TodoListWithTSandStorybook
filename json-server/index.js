@@ -39,5 +39,6 @@ server.post('/login', (req, res) => {
 });
 
 server.listen(8000, () => {
+    // eslint-disable-next-line no-console
     console.log('server is running on 8000 port');
 });
