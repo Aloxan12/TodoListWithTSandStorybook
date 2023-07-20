@@ -33,8 +33,10 @@ export const Input = memo((props: InputProps) => {
     };
 
     useEffect(() => {
-        if (autofocus) setIsFocused(true);
-        ref.current.focus();
+        if (autofocus) {
+            setIsFocused(true);
+            ref.current.focus();
+        }
     }, [autofocus]);
 
     const onBlur = () => setIsFocused(false);
