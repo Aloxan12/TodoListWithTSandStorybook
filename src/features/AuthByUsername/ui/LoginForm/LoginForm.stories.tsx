@@ -13,7 +13,4 @@ export default {
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-    placeholder: 'Type text',
-    value: '1234',
-};
+Primary.args = {};
