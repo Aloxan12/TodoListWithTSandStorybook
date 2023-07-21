@@ -7,16 +7,19 @@ interface LoginByUsernameProps {
     password: string
 }
 
-const loginByUsername = createAsyncThunk<User, LoginByUsernameProps>(
+export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, { rejectValue: string }>(
     'login/loginByUsername',
-    async ({ username, password }, thunkAPI) => {
+    async (authData, thunkAPI) => {
         try {
             const response = await axios
-                .post('http://localhost:8000/login', { username, password });
+                .post<User>('http://localhost:8000/login', authData);
+
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response.data;
         } catch (e) {
-            // eslint-disable-next-line no-console
-            console.log(e);
             return thunkAPI.rejectWithValue('error');
         }
     },
