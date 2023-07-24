@@ -17,8 +17,11 @@ export const Navbar = ({ className }: NavbarProps) => {
     const authData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
 
-    const onToggleModal = useCallback(() => {
-        setIsAuthModal((prevState) => !prevState);
+    const onOpenModal = useCallback(() => {
+        setIsAuthModal(true);
+    }, []);
+    const onCloseModal = useCallback(() => {
+        setIsAuthModal(false);
     }, []);
 
     const onLogout = useCallback(() => {
@@ -44,11 +47,11 @@ export const Navbar = ({ className }: NavbarProps) => {
             <Button
                 className={cls.links}
                 theme={ButtonTheme.CLEAR_INVERTED}
-                onClick={onToggleModal}
+                onClick={onOpenModal}
             >
                 {t('Войти')}
             </Button>
-            <LoginModal isOpen={isAuthModal} onClose={onToggleModal} />
+            <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
         </div>
     );
 };
