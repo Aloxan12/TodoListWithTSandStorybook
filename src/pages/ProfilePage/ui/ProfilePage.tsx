@@ -1,4 +1,3 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 
 interface ProfilePageProps {
@@ -8,7 +7,9 @@ interface ProfilePageProps {
 const ProfilePage = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation();
     return (
-        <div />
+        <div>
+            {t('Profile page')}
+        </div>
     );
 };
 
