@@ -22,6 +22,23 @@ export const userSlice = createSlice({
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
         },
     },
+    // extraReducers: (builder) => {
+    //     builder
+    //         .addCase(loginByUsername.pending, (state) => {
+    //             state.error = undefined;
+    //             state.isLoading = true;
+    //         })
+    //         .addCase(
+    //             loginByUsername.fulfilled,
+    //             (state) => {
+    //                 state.isLoading = false;
+    //             },
+    //         )
+    //         .addCase(loginByUsername.rejected, (state, action) => {
+    //             state.error = action.payload;
+    //             state.isLoading = false;
+    //         });
+    // },
 });
 
 export const { actions: userActions } = userSlice;
