@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import React, {
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
@@ -20,7 +20,7 @@ export const Modal = ({
 }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timeRef = useRef<ReturnType<typeof setTimeout>>();
+    const timeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const { theme } = useTheme();
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const Modal = ({
         e.stopPropagation();
     };
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     };
@@ -60,7 +60,9 @@ export const Modal = ({
         }
         return () => {
             window.removeEventListener('keydown', onKeyDown);
-            clearTimeout(timeRef.current);
+            if (timeRef.current) {
+                clearTimeout(timeRef.current);
+            }
         };
     }, [isOpen, onKeyDown]);
 
