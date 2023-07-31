@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from 'entities/Profile/ui/ProfileCard/ProfileCard.module.scss';
 import { Input } from 'shared/ui/Input/Input';
@@ -30,6 +30,7 @@ export const ProfileCard = ({
         return (
             <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
+                    align={TextAlign.CENTER}
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка при загрузке профиля')}
                     text={t('Попробуйте обновить страницу')}
@@ -40,13 +41,7 @@ export const ProfileCard = ({
 
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
-            <div className={cls.header}>
-                <Text title={t('Профиль')} />
-                <Button theme={ButtonTheme.OUTLINE} className={cls.editBtn}>
-                    {t('Редактировать')}
-                </Button>
-            </div>
-            <div className={cls.data}>
+            <div>
                 <Input
                     value={data?.first}
                     placeholder={t('Ваше имя')}
