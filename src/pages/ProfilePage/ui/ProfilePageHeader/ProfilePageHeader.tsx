@@ -21,7 +21,10 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
         dispatch(profileActions.setReadonly(false));
     }, [dispatch]);
     const onCancelEdit = useCallback(() => {
-        dispatch(profileActions.setReadonly(true));
+        dispatch(profileActions.cancelEdit());
+    }, [dispatch]);
+    const onSave = useCallback(() => {
+        dispatch(profileActions.cancelEdit());
     }, [dispatch]);
     return (
         <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
@@ -31,9 +34,14 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
                     {t('Редактировать')}
                 </Button>
             ) : (
-                <Button theme={ButtonTheme.OUTLINE} className={cls.editBtn} onClick={onCancelEdit}>
-                    {t('Отменить')}
-                </Button>
+                <>
+                    <Button theme={ButtonTheme.OUTLINE_RED} className={cls.editBtn} onClick={onCancelEdit}>
+                        {t('Отменить')}
+                    </Button>
+                    <Button theme={ButtonTheme.OUTLINE} className={cls.editBtn} onClick={onSave}>
+                        {t('Сохранить')}
+                    </Button>
+                </>
             )}
         </div>
     );
