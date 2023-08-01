@@ -14,19 +14,14 @@ import { useCallback, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Currency } from 'entities/Currency';
-import { Country } from 'shared/const/common';
+import { Country } from 'entities/Country/model/types/country';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
     profile: profileReducer,
 };
 
-interface ProfilePageProps {
-    className?: string
-}
-
-const ProfilePage = ({ className }: ProfilePageProps) => {
-    const { t } = useTranslation();
+const ProfilePage = () => {
     const dispatch = useAppDispatch();
     const data = useSelector(getProfileForm);
     const error = useSelector(getProfileError);

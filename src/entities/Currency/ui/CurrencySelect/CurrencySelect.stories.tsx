@@ -3,7 +3,7 @@ import React from 'react';
 import { CurrencySelect } from './CurrencySelect';
 
 export default {
-    title: 'shared/Select',
+    title: 'shared/CurrencySelect',
     component: CurrencySelect,
     argTypes: {
         backgroundColor: { control: 'color' },
