@@ -44,6 +44,12 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const onChangeAge = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
     }, [dispatch]);
+    const onChangeUsername = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ username: value || '' }));
+    }, [dispatch]);
+    const onChangeAvatar = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ avatar: value || '' }));
+    }, [dispatch]);
     const onChangeCity = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ city: value || '' }));
     }, [dispatch]);
@@ -61,6 +67,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     onChangeAge={onChangeAge}
                     onChangeCity={onChangeCity}
                     readonly={readonly}
+                    onChangeUsername={onChangeUsername}
+                    onChangeAvatar={onChangeAvatar}
                 />
             </div>
         </DynamicModuleLoader>
