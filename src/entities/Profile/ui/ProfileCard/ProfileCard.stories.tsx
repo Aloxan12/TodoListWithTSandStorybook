@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import AvatarImg from 'src/shared/assets/tests/img.png';
+import avatar from 'shared/assets/tests/img.png';
 import { ProfileCard } from './ProfileCard';
 
 export default {
@@ -26,7 +26,7 @@ Primary.args = {
         first: 'alex',
         city: 'minsk',
         currency: Currency.USD,
-        avatar: AvatarImg,
+        avatar,
     },
 };
 Primary.decorators = [StoreDecorator({})];
