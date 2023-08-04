@@ -4,7 +4,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 
-interface AppRouteProps extends RouteProps {
+export interface AppRouteProps extends RouteProps {
     authOnly?: boolean
 }
 
