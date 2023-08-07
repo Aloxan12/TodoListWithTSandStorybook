@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import cls from 'src/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.module.scss';
+import { memo } from 'react';
 
 interface ArticlesPageProps {
     className?: string
@@ -15,4 +16,4 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     );
 };
 
-export default ArticlesPage;
+export default memo(ArticlesPage);

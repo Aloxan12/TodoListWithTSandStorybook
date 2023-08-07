@@ -1,9 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ArticleDetailPage } from 'src/pages/ArticleDetailPage/ui/ArticleDetailPage/ArticleDetailPage';
+import ArticleDetailPage from './ArticleDetailPage';
 
 export default {
     title: 'shared/ArticleDetailPage',
@@ -16,6 +14,4 @@ export default {
 const Template: ComponentStory<typeof ArticleDetailPage> = (args) => <ArticleDetailPage {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-};
+Primary.args = {};
