@@ -1,8 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { memo, useEffect } from 'react';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
-import { articleDetailsReducer } from 'entities/Article';
+import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import cls from './ArticleDetails.module.scss';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 
 interface ArticleDetailsProps {
     className?: string
@@ -12,11 +15,19 @@ const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
 };
 
-export const ArticleDetails = ({ className }: ArticleDetailsProps) => {
+export const ArticleDetails = memo(({ className }: ArticleDetailsProps) => {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchArticleById('1'));
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames(cls.ArticleDetails, {}, [className])} />
+            <div className={classNames(cls.ArticleDetails, {}, [className])}>
+                {t('test')}
+            </div>
         </DynamicModuleLoader>
     );
-};
+});

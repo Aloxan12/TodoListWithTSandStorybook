@@ -1,8 +1,8 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import cls from 'src/pages/ArticleDetailPage/ui/ArticleDetailPage/ArticleDetailPage.module.scss';
 import { memo } from 'react';
 import { ArticleDetails } from 'entities/Article';
+import cls from './ArticleDetailPage.module.scss';
 
 interface ArticleDetailPageProps {
     className?: string

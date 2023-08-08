@@ -13,9 +13,7 @@ export default {
     },
 } as ComponentMeta<typeof ArticleImageBlockComponent>;
 
-const Template: ComponentStory<typeof ArticleImageBlockComponent> = (args) => <ArticleImageBlockComponent {...args} />;
+const Template: ComponentStory<typeof ArticleImageBlockComponent> = () => <ArticleImageBlockComponent />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-};
+Primary.args = {};
