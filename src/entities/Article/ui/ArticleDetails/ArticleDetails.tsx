@@ -9,19 +9,20 @@ import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 
 interface ArticleDetailsProps {
     className?: string
+    id: string
 }
 
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
 };
 
-export const ArticleDetails = memo(({ className }: ArticleDetailsProps) => {
-    const { t } = useTranslation();
+export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
+    const { t } = useTranslation('article');
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(fetchArticleById('1'));
-    }, [dispatch]);
+        dispatch(fetchArticleById(id));
+    }, [dispatch, id]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
