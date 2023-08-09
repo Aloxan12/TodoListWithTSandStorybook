@@ -6,6 +6,7 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cls from './ArticleDetails.module.scss';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import {
@@ -38,7 +39,13 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 
     if (isLoading) {
         content = (
-            <div>{t('Loading...')}</div>
+            <div>
+                <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
+                <Skeleton className={cls.title} width={300} height={32} />
+                <Skeleton className={cls.skeleton} width={600} height={24} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+            </div>
         );
     }
     if (error) {
