@@ -2,7 +2,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import {
+    Text, TextAlign, TextSize, TextTheme,
+} from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
@@ -10,6 +12,7 @@ import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
 import cls from './ArticleDetails.module.scss';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import {
@@ -67,13 +70,13 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
                 <div className={cls.avatarWrapper}>
                     <Avatar size={200} src={article?.img} />
                 </div>
-                <Text title={article?.title} text={article?.subtitle} />
+                <Text title={article?.title} text={article?.subtitle} size={TextSize.L} />
                 <div className={cls.articleInfo}>
-                    <EyeIcon />
+                    <Icon Svg={EyeIcon} className={cls.icon} />
                     <Text text={String(article?.views)} />
                 </div>
                 <div className={cls.articleInfo}>
-                    <CalendarIcon />
+                    <Icon Svg={CalendarIcon} className={cls.icon} />
                     <Text text={article?.createdAt} />
                 </div>
             </>
