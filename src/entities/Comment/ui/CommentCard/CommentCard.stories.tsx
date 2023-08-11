@@ -16,6 +16,4 @@ export default {
 const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-};
+Primary.args = {};

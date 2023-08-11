@@ -16,6 +16,4 @@ export default {
 const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-};
+Primary.args = {};
