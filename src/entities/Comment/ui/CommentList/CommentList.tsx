@@ -23,6 +23,7 @@ export const CommentList = memo(({ className, comments, isLoading }: CommentList
                             className={cls.comment}
                             comment={comment}
                             key={comment.id}
+                            isLoading={isLoading}
                         />
                     ))
                     : <Text text={t('Комментарии отсуствуют')} />

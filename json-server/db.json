@@ -83,19 +83,22 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://shapka-youtube.ru/wp-content/uploads/2021/04/prikolnaya-kartinka-dlya-avatarki.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://coolsen.ru/wp-content/uploads/2021/12/94-20211209_001242.jpg"
     },
     {
       "id": "3",
       "username": "alex",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://avatarko.ru/img/kartinka/2/Gubka_Bob.jpg"
     }
   ],
   "profile": {
