@@ -1,8 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
+import { CommentList } from 'entities/Comment';
 import cls from './ArticleDetailPage.module.scss';
 
 interface ArticleDetailPageProps {
@@ -23,6 +25,12 @@ const ArticleDetailPage = ({ className }: ArticleDetailPageProps) => {
     return (
         <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
             <ArticleDetails id={id} />
+            <Text title={t('Комментарии')} className={cls.commentTitle} />
+            <CommentList comments={[
+                { id: '1', text: 'comment 1', user: { id: '1', username: 'alex' } },
+                { id: '2', text: 'comment 2', user: { id: '1', username: 'alex' } },
+            ]}
+            />
         </div>
     );
 };
