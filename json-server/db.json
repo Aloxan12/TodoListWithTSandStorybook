@@ -101,14 +101,26 @@
       "avatar": "https://avatarko.ru/img/kartinka/2/Gubka_Bob.jpg"
     }
   ],
-  "profile": {
-    "first": "Alexey1",
-    "lastName": "Shavel",
-    "age": 28,
-    "currency": "EUR",
-    "country": "America",
-    "city": "Minsk",
-    "username": "admin",
-    "avatar": "https://shapka-youtube.ru/wp-content/uploads/2021/04/prikolnaya-kartinka-dlya-avatarki.jpg"
-  }
+  "profile": [
+    {
+      "first": "Alexey1",
+      "lastName": "Shavel",
+      "age": 28,
+      "currency": "EUR",
+      "country": "Belarus",
+      "city": "Minsk",
+      "username": "admin",
+      "avatar": "https://shapka-youtube.ru/wp-content/uploads/2021/04/prikolnaya-kartinka-dlya-avatarki.jpg"
+    },
+    {
+      "first": "Vika",
+      "lastName": "Shavel",
+      "age": 20,
+      "currency": "EUR",
+      "country": "America",
+      "city": "New York",
+      "username": "user",
+      "avatar": "https://coolsen.ru/wp-content/uploads/2021/12/94-20211209_001242.jpg"
+    }
+  ]
 }
