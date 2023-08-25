@@ -10,13 +10,14 @@ import {
     ProfileCard,
     profileReducer, ValidateProfileError,
 } from 'entities/Profile';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country/model/types/country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -39,10 +40,9 @@ const ProfilePage = () => {
         [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
         [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
     };
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') dispatch(fetchProfileData());
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchProfileData('1'));
+    });
 
     const onChangeFirstName = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ first: value || '' }));
