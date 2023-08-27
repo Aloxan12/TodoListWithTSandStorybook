@@ -103,6 +103,7 @@
   ],
   "profile": [
     {
+      "id": "1",
       "first": "Alexey1",
       "lastName": "Shavel",
       "age": 28,
@@ -113,6 +114,7 @@
       "avatar": "https://shapka-youtube.ru/wp-content/uploads/2021/04/prikolnaya-kartinka-dlya-avatarki.jpg"
     },
     {
+      "id": "2",
       "first": "Vika",
       "lastName": "Vika",
       "age": 20,
