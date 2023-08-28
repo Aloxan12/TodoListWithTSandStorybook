@@ -6,20 +6,20 @@ import { Button } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
-import { sendComment } from 'features/AddCommentForm/modal/services/sendComment/sendComment';
-import { addCommentFormActions, addCommentFormReducer } from '../../modal/slices/addCommentFormSlice';
-import { getAddCommentFormError, getAddCommentFormText } from '../../modal/selectors/addCommentFormSelectors';
+import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
+import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
 
-interface AddCommentFormProps {
+export interface AddCommentFormProps {
     className?: string
+    onSendComment: (text: string) => void
 }
 
 const reducers: ReducersList = {
     addCommentForm: addCommentFormReducer,
 };
 
-const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
+const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) => {
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
     const error = useSelector(getAddCommentFormError);
@@ -29,9 +29,10 @@ const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
         dispatch(addCommentFormActions.setText(value));
     }, [dispatch]);
 
-    const onSendComment = useCallback(() => {
-        dispatch(sendComment());
-    }, [dispatch]);
+    const onSendHandler = useCallback(() => {
+        onSendComment(text || '');
+        onCommentTextChange('');
+    }, [onCommentTextChange, onSendComment, text]);
 
     return (
         <DynamicModuleLoader reducers={reducers}>
@@ -42,7 +43,7 @@ const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
                     onChange={onCommentTextChange}
                     className={cls.input}
                 />
-                <Button onClick={onSendComment}>
+                <Button onClick={onSendHandler}>
                     {t('Отправить')}
                 </Button>
             </div>

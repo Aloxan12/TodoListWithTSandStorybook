@@ -76,6 +76,12 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "lol",
+      "id": "AEW9P4b"
     }
   ],
   "users": [
