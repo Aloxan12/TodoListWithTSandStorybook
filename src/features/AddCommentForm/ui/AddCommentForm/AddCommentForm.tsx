@@ -18,7 +18,7 @@ const reducers: ReducersList = {
     addCommentForm: addCommentFormReducer,
 };
 
-export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
+const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
     const error = useSelector(getAddCommentFormError);
@@ -35,6 +35,7 @@ export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
                     value={text}
                     placeholder={t('Введите текст комментария')}
                     onChange={onCommentTextChange}
+                    className={cls.input}
                 />
                 <Button>
                     {t('Отправить')}
@@ -43,3 +44,5 @@ export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
         </DynamicModuleLoader>
     );
 });
+
+export default AddCommentForm;

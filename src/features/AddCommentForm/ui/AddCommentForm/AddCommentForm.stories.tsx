@@ -1,9 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { AddCommentForm } from './AddCommentForm';
+import AddCommentForm from './AddCommentForm';
 
 export default {
     title: 'shared/AddCommentForm',
@@ -13,9 +11,7 @@ export default {
     },
 } as ComponentMeta<typeof AddCommentForm>;
 
-const Template: ComponentStory<typeof AddCommentForm> = (args) => <AddCommentForm {...args} />;
+const Template: ComponentStory<typeof AddCommentForm> = () => <AddCommentForm />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-};
+Primary.args = {};
