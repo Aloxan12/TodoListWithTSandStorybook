@@ -11,16 +11,17 @@ import { Comment } from '../../model/types/comment';
 
 interface CommentCardProps {
     className?: string
-    comment: Comment
+    comment?: Comment
     isLoading?: boolean
 }
 
 export const CommentCard = memo(({ className, comment, isLoading }: CommentCardProps) => {
     const { t } = useTranslation();
 
+    if (!comment) return null;
     if (isLoading) {
         return (
-            <div className={classNames(cls.CommentCard, {}, [className])}>
+            <div className={classNames(cls.CommentCard, {}, [className, cls.loading])}>
                 <div className={cls.header}>
                     <Skeleton width={30} height={30} border="50%" />
                     <Skeleton height={16} width={100} className={cls.username} />
