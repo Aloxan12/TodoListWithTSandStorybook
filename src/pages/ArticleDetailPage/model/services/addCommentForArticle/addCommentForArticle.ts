@@ -23,7 +23,6 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
             return rejectWithValue('no data');
         }
         try {
-            console.log('userData', userData, article);
             const response = await extra.api.post<Comment>('/comments', {
                 articleId: article.id,
                 userId: userData.id,

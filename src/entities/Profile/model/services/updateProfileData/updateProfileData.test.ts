@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import {
-    Profile, profileActions, updateProfileData, ValidateProfileError,
+    Profile, updateProfileData, ValidateProfileError,
 } from 'entities/Profile';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
@@ -11,6 +11,7 @@ jest.mock('axios');
 const mockedAxios = jest.mocked(axios, true);
 
 const profileData: Profile = {
+    id: '1',
     username: '123',
     age: 22,
     city: 'Minsk',

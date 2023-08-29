@@ -77,7 +77,7 @@ const ProfilePage = () => {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div>
                 <ProfilePageHeader />
-                {validateErrors?.length && validateErrors
+                {!!validateErrors?.length && validateErrors
                     .map((error) => (
                         <Text
                             theme={TextTheme.ERROR}
