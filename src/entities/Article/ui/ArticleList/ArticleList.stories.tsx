@@ -17,5 +17,5 @@ const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...
 
 export const Primary = Template.bind({});
 Primary.args = {
-    children: 'Text',
+    articles: [],
 };

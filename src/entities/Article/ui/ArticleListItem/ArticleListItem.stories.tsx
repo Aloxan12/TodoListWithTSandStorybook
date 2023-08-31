@@ -1,8 +1,6 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Article, ArticleView } from 'entities/Article';
 import { ArticleListItem } from './ArticleListItem';
 
 export default {
@@ -17,5 +15,6 @@ const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListI
 
 export const Primary = Template.bind({});
 Primary.args = {
-    children: 'Text',
+    article: {} as Article,
+    view: ArticleView.SMALL,
 };
