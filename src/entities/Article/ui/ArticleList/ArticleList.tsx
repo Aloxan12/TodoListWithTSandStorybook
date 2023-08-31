@@ -8,7 +8,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 interface ArticleListProps {
     className?: string
     articles: Article[]
-    isLoading?: Article[]
+    isLoading?: boolean
     view?: ArticleView
 }
 
