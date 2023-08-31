@@ -1,107 +1,98 @@
-.ArticleListItem {
-
-}
-
-
 .BIG {
-  .views {
-    margin-right: auto;
-  }
+    .views {
+        margin-right: auto;
+    }
 
-  .card {
-  }
+    .header {
+        display: flex;
+        align-items: center;
+    }
 
-  .header {
-    display: flex;
-    align-items: center;
-  }
+    .username {
+        margin-left: 8px;
+    }
 
-  .username {
-    margin-left: 8px;
-  }
+    .date {
+        margin-left: auto;
+    }
 
-  .date {
-    margin-left: auto;
-  }
+    .title {
+        margin-top: 8px;
+    }
 
-  .title {
-    margin-top: 8px;
-  }
+    .img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        margin: 16px 0;
+    }
 
-  .img {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    margin: 16px 0;
-  }
+    .footer {
+        display: flex;
+        align-items: center;
+    }
 
-  .footer {
-    display: flex;
-    align-items: center;
-  }
-
-  .textBlock {
-    max-height: 200px;
-    overflow-y: hidden;
-  }
-
+    .textBlock {
+        max-height: 200px;
+        overflow-y: hidden;
+    }
 }
 
 .SMALL {
-  width: 230px;
-  cursor: pointer;
-  transition: .2s;
-
-  &:hover {
-    opacity: .8;
-    transform: scale(1.01);
+    width: 230px;
+    cursor: pointer;
+    transition: 0.2s;
 
     .date {
-      display: block;
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
-  }
 
-  .imageWrapper {
-    height: 200px;
-    width: 200px;
-    position: relative;
-  }
+    &:hover {
+        opacity: 0.8;
+        transform: scale(1.01);
 
-  .img {
-    width: 200px;
-    height: 200px;
-  }
+        .date {
+            display: block;
+        }
+    }
 
-  .date {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+    .imageWrapper {
+        height: 200px;
+        width: 200px;
+        position: relative;
+    }
 
-  .infoWrapper {
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-  }
+    .img {
+        width: 200px;
+        height: 200px;
+    }
 
-  .types p {
-    width: 115px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .infoWrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
 
-  .views {
-    margin-left: auto;
-    margin-right: 8px;
-  }
+    .types p {
+        width: 115px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-  .title p {
-    width: 200px;
-    margin-top: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .title p {
+        width: 200px;
+        margin-top: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
