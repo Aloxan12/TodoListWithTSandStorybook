@@ -1,12 +1,14 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Icon } from 'shared/ui/Icon/Icon';
 import Eye from 'shared/assets/icons/eye-20-20.svg';
 import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './ArticleListItem.module.scss';
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
@@ -21,6 +23,7 @@ interface ArticleListItemProps {
 
 export const ArticleListItem = memo(({ className, article, view }: ArticleListItemProps) => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const types = <Text text={article.type.join(', ')} className={cls.types} />;
     const views = (
         <>
@@ -28,6 +31,10 @@ export const ArticleListItem = memo(({ className, article, view }: ArticleListIt
             <Icon Svg={Eye} />
         </>
     );
+
+    const onOpenArticle = useCallback(() => {
+        navigate(RoutePath.article_detail + article.id);
+    }, [article.id, navigate]);
 
     if (view === ArticleView.BIG) {
         const textBlock = article.blocks.find(
@@ -44,9 +51,9 @@ export const ArticleListItem = memo(({ className, article, view }: ArticleListIt
                     <Text text={article.title} className={cls.title} />
                     {types}
                     <img src={article.img} alt={article.title} className={cls.img} />
-                    {textBlock && <ArticleTextBlockComponent block={textBlock} />}
+                    {textBlock && <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />}
                     <div className={cls.footer}>
-                        <Button theme={ButtonTheme.OUTLINE}>
+                        <Button theme={ButtonTheme.OUTLINE} onClick={onOpenArticle}>
                             {t('Читать далее...')}
                         </Button>
                     </div>
@@ -55,7 +62,10 @@ export const ArticleListItem = memo(({ className, article, view }: ArticleListIt
         );
     }
     return (
-        <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+        <div
+            className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
+            onClick={onOpenArticle}
+        >
             <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt="" className={cls.img} />
