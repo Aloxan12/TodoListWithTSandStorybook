@@ -5,6 +5,7 @@ import { memo } from 'react';
 import { Icon } from 'shared/ui/Icon/Icon';
 import Eye from 'shared/assets/icons/eye-20-20.svg';
 import { Card } from 'shared/ui/Card/Card';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 
@@ -18,7 +19,13 @@ export const ArticleListItem = memo(({ className, article, view }: ArticleListIt
     if (view === ArticleView.BIG) {
         return (
             <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-                {article.title}
+                <Card className={cls.card}>
+                    <div className={cls.header}>
+                        <Avatar size={30} src={article.user.avatar} />
+                        <Text text={article.user.username} className={cls.username} />
+                        <Text text={article.createdAt} className={cls.date} />
+                    </div>
+                </Card>
             </div>
         );
     }

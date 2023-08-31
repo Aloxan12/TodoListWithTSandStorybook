@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { Article, ArticleList } from 'entities/Article';
+import { Article, ArticleList, ArticleView } from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import cls from './ArticlesPage.module.scss';
 
@@ -19,6 +19,11 @@ const article = {
     type: [
         ArticleType.IT,
     ],
+    user: {
+        id: '1',
+        username: 'alex',
+        avatar: 'https://shapka-youtube.ru/wp-content/uploads/2021/04/prikolnaya-kartinka-dlya-avatarki.jpg',
+    },
     blocks: [
         {
             id: '1',
@@ -78,8 +83,11 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const { t } = useTranslation('article');
     return (
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
-            <ArticleList articles={new Array(16).fill(0)
-                .map((item, index) => ({ ...article, id: String(index) })) as Article[]}
+            <ArticleList
+                articles={new Array(16)
+                    .fill(0)
+                    .map((item, index) => ({ ...article, id: String(index) })) as Article[]}
+                view={ArticleView.BIG}
             />
         </div>
     );
