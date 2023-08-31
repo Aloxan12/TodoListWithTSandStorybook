@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { Icon } from 'shared/ui/Icon/Icon';
 import Eye from 'shared/assets/icons/eye-20-20.svg';
+import { Card } from 'shared/ui/Card/Card';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleView } from '../../model/types/article';
 
@@ -25,7 +26,7 @@ export const ArticleListItem = memo(({ className, article, view }: ArticleListIt
     }
     return (
         <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-            <div className={cls.card}>
+            <Card className={cls.card}>
                 <div className={cls.imageWrapper}>
                     <img src={article.img} alt="" className={cls.img} />
                     <Text text={article.createdAt} className={cls.date} />
@@ -36,7 +37,7 @@ export const ArticleListItem = memo(({ className, article, view }: ArticleListIt
                     <Icon Svg={Eye} />
                 </div>
                 <Text text={article.title} className={cls.title} />
-            </div>
+            </Card>
         </div>
     );
 });
