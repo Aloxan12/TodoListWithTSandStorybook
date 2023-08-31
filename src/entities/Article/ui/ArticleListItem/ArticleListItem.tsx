@@ -15,8 +15,6 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = memo(({ className, article, view }: ArticleListItemProps) => {
-    const { t } = useTranslation();
-
     if (view === ArticleView.BIG) {
         return (
             <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
