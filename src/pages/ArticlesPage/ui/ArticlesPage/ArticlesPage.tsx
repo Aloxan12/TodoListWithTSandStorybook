@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { Article, ArticleList, ArticleView } from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
 import cls from './ArticlesPage.module.scss';
+import { articlePageReducer } from '../../model/slices/articlesPageSlice';
 
 interface ArticlesPageProps {
     className?: string
@@ -79,17 +81,24 @@ const article = {
     ],
 };
 
+const reducers: ReducersList = {
+    articlesPage: articlePageReducer,
+};
+
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const { t } = useTranslation('article');
     return (
-        <div className={classNames(cls.ArticlesPage, {}, [className])}>
-            <ArticleList
-                articles={new Array(16)
-                    .fill(0)
-                    .map((item, index) => ({ ...article, id: String(index) })) as Article[]}
-                view={ArticleView.BIG}
-            />
-        </div>
+        <DynamicModuleLoader reducers={reducers}>
+            <div className={classNames(cls.ArticlesPage, {}, [className])}>
+                <ArticleList
+                    articles={new Array(16)
+                        .fill(0)
+                        .map((item, index) => ({ ...article, id: String(index) })) as Article[]}
+                    view={ArticleView.BIG}
+                    isLoading={false}
+                />
+            </div>
+        </DynamicModuleLoader>
     );
 };
 
