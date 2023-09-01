@@ -4,8 +4,17 @@ import { memo } from 'react';
 import { Article, ArticleList, ArticleView } from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
 import cls from './ArticlesPage.module.scss';
-import { articlePageReducer } from '../../model/slices/articlesPageSlice';
+import { articlePageReducer, getArticles } from '../../model/slices/articlesPageSlice';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import {
+    getArticlesPageError,
+    getArticlesPageIsLoading,
+    getArticlesPageView,
+} from '../../model/selectors/articlesPageSelectors';
 
 interface ArticlesPageProps {
     className?: string
@@ -86,16 +95,23 @@ const reducers: ReducersList = {
 };
 
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
-    const { t } = useTranslation('article');
+    const articles = useSelector(getArticles.selectAll);
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const error = useSelector(getArticlesPageError);
+    const view = useSelector(getArticlesPageView);
+
+    const dispatch = useAppDispatch();
+
+    useInitialEffect(() => {
+        dispatch(fetchArticlesList());
+    });
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(cls.ArticlesPage, {}, [className])}>
                 <ArticleList
-                    articles={new Array(16)
-                        .fill(0)
-                        .map((item, index) => ({ ...article, id: String(index) })) as Article[]}
-                    view={ArticleView.BIG}
-                    isLoading={false}
+                    articles={articles}
+                    view={view}
+                    isLoading={isLoading}
                 />
             </div>
         </DynamicModuleLoader>
