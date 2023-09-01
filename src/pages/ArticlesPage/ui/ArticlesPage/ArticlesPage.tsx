@@ -1,14 +1,16 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import { Article, ArticleList, ArticleView } from 'entities/Article';
+import { memo, useCallback } from 'react';
+import {
+    Article, ArticleList, ArticleView, ArticleViewSelector,
+} from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import cls from './ArticlesPage.module.scss';
-import { articlePageReducer, getArticles } from '../../model/slices/articlesPageSlice';
+import { articlePageActions, articlePageReducer, getArticles } from '../../model/slices/articlesPageSlice';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageError,
@@ -96,11 +98,14 @@ const reducers: ReducersList = {
 
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const articles = useSelector(getArticles.selectAll);
+    const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticlesPageIsLoading);
     const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
 
-    const dispatch = useAppDispatch();
+    const onChangeView = useCallback((view: ArticleView) => {
+        dispatch(articlePageActions.setView(view));
+    }, [dispatch]);
 
     useInitialEffect(() => {
         dispatch(fetchArticlesList());
@@ -108,6 +113,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(cls.ArticlesPage, {}, [className])}>
+                <ArticleViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList
                     articles={articles}
                     view={view}

@@ -57,6 +57,98 @@
           "code": "const fs = require('fs');\nconst jsonServer = require('json-server');\nconst path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);"
         }
       ]
+    },
+    {
+      "id": "2",
+      "title": "Python",
+      "subtitle": "Что нового в JS за 2023 год",
+      "img": "https://e1.pxfuel.com/desktop-wallpaper/514/124/desktop-wallpaper-2048x2048-python-logo-ipad-air-backgrounds-and-python-code.jpg",
+      "views": 1022,
+      "createdAt": "26.02.2022",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "«Hello, world!» — программа, результатом работы которой является вывод на экран или иное устройство фразы «Hello, world!» (в дословном переводе с английского — «Здравствуй, мир!»; представляет собой распространённое неформальное приветствие, близкое к русскому «всем привет!»). Также используются вариации с другой пунктуацией или регистром — например, «Hello World». Обычно это первый пример программы в учебниках по программированию, и для многих студентов такая программа является первым опытом при изучении нового языка."
+          ]
+        },
+        {
+          "id": "4",
+          "type": "CODE",
+          "code": "const ArticlesPage = ({ className }: ArticlesPageProps) => {\n    const { t } = useTranslation('article');\n    return (\n        <div className={classNames(cls.ArticlesPage, {}, [className])}>\n            {t('ArticlesPage')}\n        </div>\n    );\n};"
+        },
+        {
+          "id": "5",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "«Hello, world!» — программа, результатом работы которой является вывод на экран или иное устройство фразы «Hello, world!» (в дословном переводе с английского — «Здравствуй, мир!»; представляет собой распространённое неформальное приветствие, близкое к русскому «всем привет!»). Также используются вариации с другой пунктуацией или регистром — например, «Hello World». Обычно это первый пример программы в учебниках по программированию, и для многих студентов такая программа является первым опытом при изучении нового языка."
+          ]
+        },
+        {
+          "id": "2",
+          "type": "IMAGE",
+          "title": "Заголовок этого блока",
+          "src": "https://cdn-icons-png.flaticon.com/512/5683/5683661.png"
+        },
+        {
+          "id": "3",
+          "type": "CODE",
+          "code": "const fs = require('fs');\nconst jsonServer = require('json-server');\nconst path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Node js",
+      "subtitle": "Что нового в JS за 2023 год",
+      "img": "https://play-lh.googleusercontent.com/grClm6lM3bRi7Yc5ABp9Z98CeDtEm3n0902tZYoj2qIkKTKzQKZS9crKRTctw0RRHeQ",
+      "views": 1022,
+      "createdAt": "26.02.2022",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "«Hello, world!» — программа, результатом работы которой является вывод на экран или иное устройство фразы «Hello, world!» (в дословном переводе с английского — «Здравствуй, мир!»; представляет собой распространённое неформальное приветствие, близкое к русскому «всем привет!»). Также используются вариации с другой пунктуацией или регистром — например, «Hello World». Обычно это первый пример программы в учебниках по программированию, и для многих студентов такая программа является первым опытом при изучении нового языка."
+          ]
+        },
+        {
+          "id": "4",
+          "type": "CODE",
+          "code": "const ArticlesPage = ({ className }: ArticlesPageProps) => {\n    const { t } = useTranslation('article');\n    return (\n        <div className={classNames(cls.ArticlesPage, {}, [className])}>\n            {t('ArticlesPage')}\n        </div>\n    );\n};"
+        },
+        {
+          "id": "5",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "«Hello, world!» — программа, результатом работы которой является вывод на экран или иное устройство фразы «Hello, world!» (в дословном переводе с английского — «Здравствуй, мир!»; представляет собой распространённое неформальное приветствие, близкое к русскому «всем привет!»). Также используются вариации с другой пунктуацией или регистром — например, «Hello World». Обычно это первый пример программы в учебниках по программированию, и для многих студентов такая программа является первым опытом при изучении нового языка."
+          ]
+        },
+        {
+          "id": "2",
+          "type": "IMAGE",
+          "title": "Заголовок этого блока",
+          "src": "https://cdn-icons-png.flaticon.com/512/5683/5683661.png"
+        },
+        {
+          "id": "3",
+          "type": "CODE",
+          "code": "const fs = require('fs');\nconst jsonServer = require('json-server');\nconst path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);"
+        }
+      ]
     }
   ],
   "comments": [
