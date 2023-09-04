@@ -9,7 +9,7 @@ import {
 } from '../../selectors/articlesPageSelectors';
 
 export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
-    'articlesPage/fetchArticlesList',
+    'articlesPage/fetchNextArticlesPage',
     async (props, thunkApi) => {
         const { getState, dispatch } = thunkApi;
         const hasMore = getArticlesPageHasMore(getState());
