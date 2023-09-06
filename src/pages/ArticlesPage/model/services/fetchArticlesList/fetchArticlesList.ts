@@ -8,7 +8,7 @@ import {
 } from '../../selectors/articlesPageSelectors';
 
 interface FetchArticlesListProps {
-    page?: number
+    replace?: boolean
 }
 
 export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
