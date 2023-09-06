@@ -5,7 +5,7 @@ export function useThrottle(callback: (...args: any[]) => void, delay: number) {
 
     return useCallback((...args: any[]) => {
         if (!throttleRef.current) {
-            callback(args);
+            callback(...args);
             throttleRef.current = true;
 
             setTimeout(() => {
