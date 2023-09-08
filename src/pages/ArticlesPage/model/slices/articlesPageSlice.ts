@@ -65,7 +65,7 @@ export const articlesPageSlice = createSlice({
         });
         builder.addCase(fetchArticlesList.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.hasMore = action.payload.length > 0;
+            state.hasMore = action.payload.length >= state.limit;
             if (action.meta.arg.replace) {
                 articleAdapter.setAll(state, action.payload);
             } else {
