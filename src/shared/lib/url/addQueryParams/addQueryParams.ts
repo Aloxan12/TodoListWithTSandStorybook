@@ -15,5 +15,5 @@ export function addQueryParams(params: OptionalRecord<string, string>) {
             searchParams.set(name, value);
         }
     });
-    window.history.pushState(null, getQueryParams(params));
+    window.history.pushState(null, '', getQueryParams(params));
 }
