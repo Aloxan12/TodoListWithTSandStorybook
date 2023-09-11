@@ -4,7 +4,7 @@ import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import {
-    ArticleView, ArticleViewSelector, ArticleSortSelector, ArticleSortField,
+    ArticleView, ArticleViewSelector, ArticleSortSelector, ArticleTypeTabs, ArticleSortField,
 } from 'entities/Article';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
@@ -12,7 +12,6 @@ import { SortOrder } from 'shared/types';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ArticleType } from 'entities/Article/model/types/article';
-import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import { articlePageActions } from '../../model/slices/articlesPageSlice';
 import {
     getArticlesPageOrder, getArticlesPageSearch,
