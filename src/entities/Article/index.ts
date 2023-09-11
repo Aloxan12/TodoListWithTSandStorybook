@@ -1,7 +1,9 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 
 export { articleDetailsActions, articleDetailsReducer } from './model/slice/articleDetailsSlice';
-export { Article, ArticleView, ArticleSortField } from './model/types/article';
+export {
+    Article, ArticleView, ArticleSortField, ArticleType,
+} from './model/types/article';
 export { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 
 export {
