@@ -1,6 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { ChangeEvent, memo, useMemo } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 import cls from './Select.module.scss';
 
 export interface SelectOption<T extends string> {

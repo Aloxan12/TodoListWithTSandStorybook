@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { Select } from 'shared/ui/Select/Select';
+import { Select } from './Select';
 
 export default {
     title: 'shared/Select',
