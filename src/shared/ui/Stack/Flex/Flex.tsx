@@ -1,11 +1,28 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { memo, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between'
 export type FlexAlign = 'start' | 'center' | 'end'
 export type FlexDirection = 'row' | 'column'
+
+const justifyClasses: Record<FlexJustify, string> = {
+    start: cls.justifyStart,
+    center: cls.justifyCenter,
+    end: cls.justifyEnd,
+    between: cls.justifyBetween,
+};
+
+const alignClasses: Record<FlexAlign, string> = {
+    start: cls.alignStart,
+    center: cls.alignCenter,
+    end: cls.alignEnd,
+};
+
+const directionClasses: Record<FlexDirection, string> = {
+    row: cls.directionRow,
+    column: cls.directionColumn,
+};
 
 interface FlexProps {
     className?: string
@@ -18,9 +35,16 @@ interface FlexProps {
 export const Flex = ({
     className, children, justify = 'start', align = 'center', direction = 'row',
 }: FlexProps) => {
-    const { t } = useTranslation();
+    const classes = [
+        className,
+        justifyClasses[justify],
+        alignClasses[align],
+        directionClasses[direction],
+
+    ];
+
     return (
-        <div className={classNames(cls.Flex, {}, [className])}>
+        <div className={classNames(cls.Flex, {}, classes)}>
             {children}
         </div>
     );
