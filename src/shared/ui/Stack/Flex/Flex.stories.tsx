@@ -13,5 +13,27 @@ export default {
 
 const Template: ComponentStory<typeof Flex> = (args) => <Flex {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Row = Template.bind({});
+Row.args = {
+    children: (
+        <>
+            <div>first</div>
+            <div>first</div>
+            <div>first</div>
+            <div>first</div>
+        </>
+    ),
+};
+
+export const Column = Template.bind({});
+Column.args = {
+    direction: 'column',
+    children: (
+        <>
+            <div>first</div>
+            <div>first</div>
+            <div>first</div>
+            <div>first</div>
+        </>
+    ),
+};
