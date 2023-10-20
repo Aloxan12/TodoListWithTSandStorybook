@@ -9,8 +9,8 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
     const reducers = { ...initialReducers };
 
     let combinedReducer = combineReducers(reducers);
-    let keysToRemove: StateSchemaKey[] = [];
 
+    let keysToRemove: Array<StateSchemaKey> = [];
     const mountedReducers: MountedReducers = {};
 
     return {
@@ -24,27 +24,25 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
                 });
                 keysToRemove = [];
             }
-
             return combinedReducer(state, action);
         },
-
         add: (key: StateSchemaKey, reducer: Reducer) => {
             if (!key || reducers[key]) {
                 return;
             }
-
             reducers[key] = reducer;
             mountedReducers[key] = true;
+
             combinedReducer = combineReducers(reducers);
         },
-
         remove: (key: StateSchemaKey) => {
             if (!key || !reducers[key]) {
                 return;
             }
             delete reducers[key];
-            mountedReducers[key] = false;
             keysToRemove.push(key);
+            mountedReducers[key] = false;
+
             combinedReducer = combineReducers(reducers);
         },
     };

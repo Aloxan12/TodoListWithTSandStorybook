@@ -1,12 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
 import { ArticlesPageFilters } from './ArticlesPageFilters';
 
 export default {
-    title: 'shared/ArticlesPageFilters',
+    title: 'pages/ArticlesPage/ArticlesPageFilters',
     component: ArticlesPageFilters,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -15,5 +13,5 @@ export default {
 
 const Template: ComponentStory<typeof ArticlesPageFilters> = (args) => <ArticlesPageFilters {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Normal = Template.bind({});
+Normal.args = {};

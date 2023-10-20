@@ -1,41 +1,43 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Select } from 'shared/ui/Select/Select';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { useCallback } from 'react';
-import cls from './CountrySelect.module.scss';
+import { memo, useCallback } from 'react';
+import { ListBox } from 'shared/ui/ListBox/ListBox';
+import { Country } from '../../model/types/country';
 
 interface CountrySelectProps {
-    className?: string
-    readonly?: boolean
-    value?: Country
-    onChange?: (value: Country) => void
+    className?: string;
+    value?: Country;
+    onChange?: (value: Country) => void;
+    readonly?: boolean;
 }
 
 const options = [
-    { value: Country.Belarus, content: Country.Belarus },
-    { value: Country.America, content: Country.America },
-    { value: Country.Ukraine, content: Country.Ukraine },
+    { value: Country.Armenia, content: Country.Armenia },
     { value: Country.Russia, content: Country.Russia },
+    { value: Country.Belarus, content: Country.Belarus },
+    { value: Country.Kazakhstan, content: Country.Kazakhstan },
+    { value: Country.Ukraine, content: Country.Ukraine },
 ];
 
-export const CountrySelect = ({
-    className, value, readonly, onChange,
+export const CountrySelect = memo(({
+    className, value, onChange, readonly,
 }: CountrySelectProps) => {
     const { t } = useTranslation();
 
     const onChangeHandler = useCallback((value: string) => {
         onChange?.(value as Country);
     }, [onChange]);
+
     return (
-        <Select
-            value={value}
+        <ListBox
             onChange={onChangeHandler}
-            className={classNames('', {}, [className])}
+            value={value}
+            defaultValue={t('Укажите страну')}
             label={t('Укажите страну')}
-            options={options}
+            items={options}
             readonly={readonly}
+            direction="top right"
         />
     );
-};
+});

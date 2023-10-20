@@ -1,13 +1,12 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import avatar from 'shared/assets/tests/img.png';
+import avatar from 'shared/assets/tests/storybook.jpg';
 import { ProfileCard } from './ProfileCard';
 
 export default {
-    title: 'pages/ProfileCard',
+    title: 'entities/ProfileCard',
     component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -19,26 +18,23 @@ const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...
 export const Primary = Template.bind({});
 Primary.args = {
     data: {
-        username: 'alex',
+        username: 'admin',
         age: 22,
-        country: Country.America,
-        lastName: 'shav',
-        first: 'alex',
-        city: 'minsk',
+        country: Country.Ukraine,
+        lastname: 'ulbi tv',
+        first: 'asd',
+        city: 'asf',
         currency: Currency.USD,
         avatar,
     },
 };
-Primary.decorators = [StoreDecorator({})];
 
-export const WithError = Template.bind({});
-WithError.args = {
-    error: 'Ошибка',
+export const withError = Template.bind({});
+withError.args = {
+    error: 'true',
 };
-WithError.decorators = [StoreDecorator({})];
 
 export const Loading = Template.bind({});
 Loading.args = {
     isLoading: true,
 };
-Loading.decorators = [StoreDecorator({})];

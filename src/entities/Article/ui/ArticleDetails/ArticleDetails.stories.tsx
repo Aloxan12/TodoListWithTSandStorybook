@@ -2,77 +2,64 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { ArticleBlockType, ArticleType, Article } from '../../model/types/article';
 import { ArticleDetails } from './ArticleDetails';
 
 export default {
-    title: 'entities/ArticleDetails',
+    title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof ArticleDetails>;
 
+const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+
 const article: Article = {
     id: '1',
-    title: 'Javascript',
-    subtitle: 'Что нового в JS за 2023 год',
-    img: 'https://rockcontent.com/br/wp-content/uploads/sites/2/2020/04/Javascript-1024x750.png.webp',
+    title: 'Javascript news',
+    subtitle: 'Что нового в JS за 2022 год?',
+    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
+    type: [ArticleType.IT],
     user: {
         id: '1',
-        username: 'alex',
-        avatar: 'https://shapka-youtube.ru/wp-content/uploads/2021/04/prikolnaya-kartinka-dlya-avatarki.jpg',
+        username: 'Ulbi tv',
     },
-    type: [
-        ArticleType.IT,
-    ],
     blocks: [
         {
             id: '1',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
-                '«Hello, world!» — программа, результатом работы которой является вывод на экран или иное устройство фразы «Hello, world!» (в дословном переводе с английского — «Здравствуй, мир!»; представляет собой распространённое неформальное приветствие, близкое к русскому «всем привет!»). Также используются вариации с другой пунктуацией или регистром — например, «Hello World». Обычно это первый пример программы в учебниках по программированию, и для многих студентов такая программа является первым опытом при изучении нового языка.',
+                'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',
+                'JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.',
+                'Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:',
             ],
         },
         {
             id: '4',
             type: ArticleBlockType.CODE,
-            code: "const ArticlesPage = ({ className }: ArticlesPageProps) => {\n    const { t } = useTranslation('article');\n    return (\n        <div className={classNames(cls.ArticlesPage, {}, [className])}>\n            {t('ArticlesPage')}\n        </div>\n    );\n};",
+            code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
         },
         {
             id: '5',
             type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
-                '«Hello, world!» — программа, результатом работы которой является вывод на экран или иное устройство фразы «Hello, world!» (в дословном переводе с английского — «Здравствуй, мир!»; представляет собой распространённое неформальное приветствие, близкое к русскому «всем привет!»). Также используются вариации с другой пунктуацией или регистром — например, «Hello World». Обычно это первый пример программы в учебниках по программированию, и для многих студентов такая программа является первым опытом при изучении нового языка.',
+                'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',
+                'Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:',
             ],
-        },
-        {
-            id: '2',
-            type: ArticleBlockType.IMAGE,
-            title: 'Заголовок этого блока',
-            src: 'https://cdn-icons-png.flaticon.com/512/5683/5683661.png',
-        },
-        {
-            id: '3',
-            type: ArticleBlockType.CODE,
-            code: "const fs = require('fs');\nconst jsonServer = require('json-server');\nconst path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);",
         },
     ],
 };
-
-const Template: ComponentStory<typeof ArticleDetails> = () => <ArticleDetails id="1" />;
 
 export const Normal = Template.bind({});
 Normal.args = {};
 Normal.decorators = [StoreDecorator({
     articleDetails: {
         data: article,
-        isLoading: false,
     },
 })];
 
@@ -80,7 +67,6 @@ export const Loading = Template.bind({});
 Loading.args = {};
 Loading.decorators = [StoreDecorator({
     articleDetails: {
-        data: article,
         isLoading: true,
     },
 })];
@@ -89,7 +75,6 @@ export const Error = Template.bind({});
 Error.args = {};
 Error.decorators = [StoreDecorator({
     articleDetails: {
-        error: 'Ошибка',
-        isLoading: false,
+        error: 'error',
     },
 })];

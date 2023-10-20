@@ -1,6 +1,6 @@
 .BIG {
     .views {
-        margin-right: auto;
+        margin-left: auto;
     }
 
     .header {
@@ -30,6 +30,7 @@
     .footer {
         display: flex;
         align-items: center;
+        margin-top: 16px;
     }
 
     .textBlock {
@@ -40,14 +41,14 @@
 
 .SMALL {
     width: 230px;
-    cursor: pointer;
     transition: 0.2s;
+    cursor: pointer;
 
     .date {
-        display: none;
         position: absolute;
         right: 0;
         top: 0;
+        display: none;
     }
 
     &:hover {
@@ -60,14 +61,15 @@
     }
 
     .imageWrapper {
-        height: 200px;
         width: 200px;
+        height: 200px;
         position: relative;
     }
 
     .img {
         width: 200px;
         height: 200px;
+        object-fit: cover;
     }
 
     .infoWrapper {
@@ -88,9 +90,12 @@
         margin-right: 8px;
     }
 
+    .title {
+        margin-top: 8px;
+    }
+
     .title p {
         width: 200px;
-        margin-top: 8px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

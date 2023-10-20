@@ -14,65 +14,65 @@ export default {
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
-export const OnlyTitle = Template.bind({});
-OnlyTitle.args = {
-    title: 'Title',
+export const Primary = Template.bind({});
+Primary.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-    title: 'Title',
-    text: 'trew trew ',
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
     theme: TextTheme.ERROR,
 };
 
-export const OnlyText = Template.bind({});
-OnlyText.args = {
-    text: 'Text',
+export const onlyTitle = Template.bind({});
+onlyTitle.args = {
+    title: 'Title lorem ipsun',
 };
 
-export const TitleWithText = Template.bind({});
-OnlyText.args = {
-    title: 'Title',
-    text: 'Text',
+export const onlyText = Template.bind({});
+onlyText.args = {
+    text: 'Description Description Description Description',
 };
 
-export const OnlyTitleDark = Template.bind({});
-OnlyTitleDark.args = {
-    title: 'Title',
+export const PrimaryDark = Template.bind({});
+PrimaryDark.args = {
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
 };
-OnlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)];
+PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const OnlyTextDark = Template.bind({});
-OnlyTextDark.args = {
-    text: 'Text',
+export const onlyTitleDark = Template.bind({});
+onlyTitleDark.args = {
+    title: 'Title lorem ipsun',
 };
-OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
+onlyTitleDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-export const TitleWithTextDark = Template.bind({});
-OnlyTextDark.args = {
-    title: 'Title',
-    text: 'Text',
+export const onlyTextDark = Template.bind({});
+onlyTextDark.args = {
+    text: 'Description Description Description Description',
 };
-TitleWithTextDark.decorators = [ThemeDecorator(Theme.DARK)];
+onlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const SizeL = Template.bind({});
 SizeL.args = {
-    title: 'Title l',
-    text: 'Text text text',
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
     size: TextSize.L,
 };
 
 export const SizeM = Template.bind({});
 SizeM.args = {
-    title: 'Title m',
-    text: 'Text text text',
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
     size: TextSize.M,
 };
 
 export const SizeS = Template.bind({});
 SizeS.args = {
-    title: 'Title s',
-    text: 'Text text text',
+    title: 'Title lorem ipsun',
+    text: 'Description Description Description Description',
     size: TextSize.S,
 };

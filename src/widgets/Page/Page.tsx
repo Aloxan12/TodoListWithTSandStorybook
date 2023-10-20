@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
-    MutableRefObject, ReactNode, useRef, UIEvent,
+    memo, MutableRefObject, ReactNode, UIEvent, useRef,
 } from 'react';
 import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -13,14 +13,15 @@ import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 
 interface PageProps {
-    className?: string
-    children: ReactNode
-    onScrollEnd?: () => void
+    className?: string;
+    children: ReactNode;
+    onScrollEnd?: () => void;
 }
 
 export const PAGE_ID = 'PAGE_ID';
 
-export const Page = ({ className, children, onScrollEnd }: PageProps) => {
+export const Page = memo((props: PageProps) => {
+    const { className, children, onScrollEnd } = props;
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useAppDispatch();
@@ -30,8 +31,8 @@ export const Page = ({ className, children, onScrollEnd }: PageProps) => {
     );
 
     useInfiniteScroll({
-        wrapperRef,
         triggerRef,
+        wrapperRef,
         callback: onScrollEnd,
     });
 
@@ -57,4 +58,4 @@ export const Page = ({ className, children, onScrollEnd }: PageProps) => {
             {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
         </main>
     );
-};
+});

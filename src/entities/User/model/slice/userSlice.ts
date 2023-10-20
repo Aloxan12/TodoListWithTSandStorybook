@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
-import { User, UserSchema } from '../types/user';
+import { UserSchema, User } from '../types/user';
 
 const initialState: UserSchema = {
     _inited: false,
@@ -25,24 +25,8 @@ export const userSlice = createSlice({
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
         },
     },
-    // extraReducers: (builder) => {
-    //     builder
-    //         .addCase(loginByUsername.pending, (state) => {
-    //             state.error = undefined;
-    //             state.isLoading = true;
-    //         })
-    //         .addCase(
-    //             loginByUsername.fulfilled,
-    //             (state) => {
-    //                 state.isLoading = false;
-    //             },
-    //         )
-    //         .addCase(loginByUsername.rejected, (state, action) => {
-    //             state.error = action.payload;
-    //             state.isLoading = false;
-    //         });
-    // },
 });
 
+// Action creators are generated for each case reducer function
 export const { actions: userActions } = userSlice;
 export const { reducer: userReducer } = userSlice;

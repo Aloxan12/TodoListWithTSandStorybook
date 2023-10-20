@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { ArticleList } from 'entities/Article';
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { VStack } from 'shared/ui/Stack';
 import {
-    useGetArticleRecommendationsListQuery,
+    useArticleRecommendationsList,
 } from '../../api/aritcleRecommendationsApi';
 
 interface ArticleRecommendationsListProps {
@@ -15,7 +15,7 @@ interface ArticleRecommendationsListProps {
 export const ArticleRecommendationsList = memo((props: ArticleRecommendationsListProps) => {
     const { className } = props;
     const { t } = useTranslation();
-    const { isLoading, data: articles, error } = useGetArticleRecommendationsListQuery(3);
+    const { isLoading, data: articles, error } = useArticleRecommendationsList(3);
 
     if (isLoading || error) {
         return null;

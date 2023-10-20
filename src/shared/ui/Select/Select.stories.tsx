@@ -1,5 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Select } from './Select';
 
 export default {
@@ -16,7 +16,7 @@ export const Primary = Template.bind({});
 Primary.args = {
     label: 'Укажите значение',
     options: [
-        { value: '1', content: 'Первый' },
-        { value: '2', content: 'Второй' },
+        { value: '123', content: 'Первый пункт' },
+        { value: '1234', content: 'Второй пункт' },
     ],
 };
