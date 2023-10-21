@@ -7,8 +7,8 @@ import path from 'path';
 
 export default {
     globals: {
-        __API__: '',
         __IS_DEV__: true,
+        __API__: '',
         __PROJECT__: 'jest',
     },
     clearMocks: true,

@@ -1,15 +1,17 @@
 import webpack from 'webpack';
-import { buildBabelLoader } from './loaders/buildBabelLoader';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+    const { isDev } = options;
+
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     };
 
-    const babelLoader = buildBabelLoader(isDev);
+    const babelLoader = buildBabelLoader(options);
 
     const cssLoader = buildCssLoader(isDev);
 
